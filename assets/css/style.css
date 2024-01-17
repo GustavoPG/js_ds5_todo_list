@@ -1,0 +1,84 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    align-items: center; 
+}
+
+.todo_list{
+    width: 70%;
+    margin-top: 5rem;
+}
+
+#txtNewTask{
+    width: 80%;
+}
+
+#btnAdd{
+    width: 15%;
+    display: inline;
+}
+
+.result{
+    display: flex;
+}
+
+#viewTotal{
+    display: inline;
+}
+
+#viewDone{
+    display: inline;
+}
+
+.pin{
+    display: inline;
+}
+
+.total{
+    width: 30%;
+}
+
+.list_tasks{
+    display: flex;
+}
+
+#listTasks{
+    width: 70%;
+}
+
+.list_tasks{
+    display: flex;
+    flex-direction: row;
+    column-gap: 5rem;
+    text-align: center;
+}
+
+.item1{
+    width: 10%;
+    text-align: left;
+}
+
+
+.item2{
+    width: 70%;
+    text-align: left;
+}
+
+
+.item3{
+    width: 20%;
+    text-align: center;
+}
