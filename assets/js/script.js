@@ -1,66 +1,48 @@
 let tasks;
-let cont = 0;
+let cont;
 let contDone = 0;
 tasks = [
     {
         id: 0,
         task: "Tarea 1",
-        done: true
+        done: false
     },
-
     {
         id: 1,
         task: "Tarea 2",
         done: true
     },
-
     {
         id: 2,
         task: "Tarea 3",
-        done: true
+        done: false
     }
 ];
 
-maxValue=Math.max(...tasks.map(x=>parseInt(x.id)))
-// Filtra el objeto tal que los valores sean igual al máximo
-result=tasks.filter(x=>x.tasks==maxValue)
-// Imprime el resultado
-console.log(result)
-
-console.log(tasks.length);
-
 const AddTask = () => {
     const txt = document.getElementById('txtNewTask').value;
-    
     if (txt != ''){
-        
-        let newTask = {id: tasks.length + 1, task: txt, done: false};
+        let newTask = {id: cont, task: txt, done: false};
         tasks.push(newTask);
         document.getElementById('txtNewTask').value = '';
-        document.getElementById('txtNewTask').focus;
+        document.getElementById('txtNewTask').focus();
+        cont += 1;
+        LoadInfo();
     }
 }   
 
 const LoadInfo = () => {
     const txt = document.getElementById('txtNewTask').value;
     const elemento = document.getElementById('listTasks');
-    
-    if (txt != ''){
-        let newTask = {id: tasks.length, task: txt, done: false};
-        tasks.push(newTask);
-        document.getElementById('txtNewTask').value = '';
-        document.getElementById('txtNewTask').focus;
-
-        cont = tasks.length;
-    }
+    contDone = 0;
 
     let doc = `<div class="list_tasks">
-                    <div class="item1">ID</div>
-                    <div class="item2">Tarea</div>
-                    <div class="item3">Acciones</div>
+                    <div class="item1 title">ID</div>
+                    <div class="item2 title">Tarea</div>
+                    <div class="item3 title">Acciones</div>
                 </div>`;
 
-    if (cont >= 0){
+    if (tasks.length >= 0){
         for (let i = 0; i < tasks.length; i++){
             doc += `<div id="${tasks[i].id}" class="list_tasks">
                         <div class="item1">
@@ -69,34 +51,53 @@ const LoadInfo = () => {
                         <div class="item2">
                         ${tasks[i].task}
                         </div>
-                        <div class="item3">`
+                        <div class="item3 action">`
                         if (tasks[i].done === true){
-                            doc += `<input type="checkbox" id="cbox" value="check" checked />`
+                            doc += `<input type="checkbox" id="a${tasks[i].id}" value="check" checked onclick="CheckDone(this.id)" class="form-check-input" /><span id="b${tasks[i].id}" class="pin icon" onclick="Delete(this.id)"> X </span>`
                             contDone ++;
                         }
                         else{
-                            doc += `<input type="checkbox" id="cbox" value="check" /> <span class="pin"> X </span>`
+                            doc += `<input type="checkbox" id="a${tasks[i].id}" value="check" onclick="CheckDone(this.id)" class="form-check-input" /><span id="b${tasks[i].id}" class="pin icon" onclick="Delete(this.id)"> X </span>`
                         }
                         doc += `</div>
                     </div>`
         }
-
-        console.log(tasks);
-        document.getElementById('viewTotal').innerHTML = cont;
-        document.getElementById('viewDone').innerText = contDone;
+        document.getElementById('viewTotal').innerHTML = tasks.length;
+        document.getElementById('viewDone').innerHTML = contDone;
         elemento.innerHTML = doc;
-    
     }
+}
 
-    function MaxValue(){
-        maxValue=Math.max(...tasks.map(x=>parseInt(x.id)));
-        // Filtra el objeto tal que los valores sean igual al máximo
-        result=tasks.filter(x=>x.tasks==maxValue);
-        return result + 1;
+const CheckDone = (id) =>{
+    id = Number(id.replace('a','').replace('b',''));
+    for (let i= 0; i < tasks.length; i++){
+        if (tasks[i].id === id){
+            if(tasks[i].done === true){
+                tasks[i].done =  false;
+            }else{
+                tasks[i].done = true;
+            }
+        }
     }
+    LoadInfo();
+}
 
+const Delete = (id) =>{
+    id = Number(id.replace('a','').replace('b',''));
+    for (let i= 0; i < tasks.length; i++){
+        if(tasks[i].id === id){
+            tasks.splice(i,1);
+            LoadInfo();
+        }
+    }
+}
+
+const Load = () =>{
+    cont = tasks.length;
+    LoadInfo();
 }
 
 document.getElementById('btnAdd').addEventListener('click',AddTask);
+window.addEventListener('load', Load);
 
-
+//document.getElementsByClassName('delete').addEventListener('click', Delete(this.id));
