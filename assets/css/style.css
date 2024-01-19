@@ -9,6 +9,10 @@ html{
     min-width: 100vw;
 }
 
+body{
+    background-color: rgb(229, 233, 233);
+}
+
 .container{
     display: flex;
     flex-direction: row;
@@ -19,6 +23,7 @@ html{
 
 .todo_list{
     width: 70%;
+    min-width: 650px;;
     margin-top: 5rem;
 }
 
@@ -33,6 +38,7 @@ html{
 
 .result{
     display: flex;
+    padding-top: 2rem;
 }
 
 #viewTotal{
@@ -49,6 +55,16 @@ html{
 
 .total{
     width: 30%;
+}
+
+.total div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.total div p{
+    width: 50%;
 }
 
 .list_tasks{
@@ -71,35 +87,35 @@ html{
     text-align: left;
 }
 
-
 .item2{
     width: 70%;
     text-align: left;
+    font-weight: 500;
 }
-
 
 .item3{
     width: 25%;
     text-align: center;
+}
 
-}.title{
+.title{
     font-weight: 700;
 }
 
 .action{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    
-    
+    justify-content: space-around;  
 }
 
 .icon{
-    cursor: pointer;
-    color:brown;
+    
+    color:rgb(196, 69, 69);
+    font-weight: 700;
 }
 
 .icon:hover{
     font-weight: 800;
-    color: crimson;
+    color: rgb(245, 8, 8);
+    cursor:pointer;
 }
