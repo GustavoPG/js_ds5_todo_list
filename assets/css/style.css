@@ -22,8 +22,8 @@ body{
 }
 
 .todo_list{
-    width: 70%;
-    min-width: 650px;;
+    width: 85%;
+    min-width: 850px;;
     margin-top: 5rem;
 }
 
@@ -54,7 +54,7 @@ body{
 }
 
 .total{
-    width: 30%;
+    width: 25%;
 }
 
 .total div{
@@ -72,29 +72,30 @@ body{
 }
 
 #listTasks{
-    width: 70%;
+    width: 75%;
 }
 
 .list_tasks{
     display: flex;
     flex-direction: row;
-    column-gap: 5rem;
+    column-gap: 1.5rem;
+    justify-content: space-between;
     text-align: center;
 }
 
 .item1{
-    width: 5%;
+    width: 2rem;
     text-align: left;
 }
 
 .item2{
-    width: 70%;
+    width: 100%;
     text-align: left;
     font-weight: 500;
 }
 
 .item3{
-    width: 25%;
+    width: 5rem;
     text-align: center;
 }
 
