@@ -52,7 +52,7 @@ const renderInfo = () => {
                         <div class="font-weight-bold item2 ${task.done ? 'text-primary' : 'text-danger'}">
                         ${task.task}</div>
                         <div class="item3 action">
-                        <input type="checkbox" value="check" ${task.done ? 'checked' : ''} onclick="checkDone(${task.id})" class="form-check-input" />
+                        <input type="checkbox" id="check${task.id}" value="check" ${task.done ? 'checked' : ''} onclick="checkDone(${task.id})" class="form-check-input" />
                         <span id="b${task.id}" class="pin icon" onclick="deleteTask(${task.id})"> X </span>
                         </div>
                     </div>`;
