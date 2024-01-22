@@ -26,14 +26,14 @@ tasks = [
 
 const addTask = () => {
     const txt = document.getElementById('txtNewTask').value;
-    if (txt != ''){
+    if (txt.trim() != ''){
         let newTask = {id: cont, task: txt, done: false};
         tasks.push(newTask);
-        document.getElementById('txtNewTask').value = '';
-        document.getElementById('txtNewTask').focus();
         cont += 1;
         renderInfo();
     }
+    document.getElementById('txtNewTask').value = '';
+    document.getElementById('txtNewTask').focus();
 }   
 
 const renderInfo = () => {
@@ -57,7 +57,7 @@ const renderInfo = () => {
                         </div>
                     </div>`;
                     if (task.done) {
-                        contDone++;
+                        contDone+=1;
                     }
         }
         document.getElementById('viewTotal').innerHTML = tasks.length;
